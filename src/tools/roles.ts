@@ -133,7 +133,7 @@ export function registerRoleTools(
   // 4. modify_role
   server.registerTool("modify_role", {
     title: "Modify Role",
-    description: "Modify an existing role in a guild.",
+    description: "Modify an existing role in a guild. Can only modify roles below the bot's highest role.",
     inputSchema: z.object({
       guild_id: snowflake.optional().describe("Guild ID (uses default if omitted)"),
       role_id: snowflake.describe("The role ID to modify"),
@@ -171,7 +171,7 @@ export function registerRoleTools(
   // 5. delete_role
   server.registerTool("delete_role", {
     title: "Delete Role",
-    description: "Delete a role from a guild. This action is irreversible.",
+    description: "Delete a role from a guild. This action is irreversible. Can only delete roles below the bot's highest role.",
     inputSchema: z.object({
       guild_id: snowflake.optional().describe("Guild ID (uses default if omitted)"),
       role_id: snowflake.describe("The role ID to delete"),
@@ -196,7 +196,7 @@ export function registerRoleTools(
   // 6. reorder_roles
   server.registerTool("reorder_roles", {
     title: "Reorder Roles",
-    description: "Reorder roles in a guild by specifying new positions.",
+    description: "Reorder roles in a guild by specifying new positions. Note: bots can only move roles below their own highest role.",
     inputSchema: z.object({
       guild_id: snowflake.optional().describe("Guild ID (uses default if omitted)"),
       roles: z.array(

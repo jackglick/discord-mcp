@@ -262,7 +262,7 @@ export function registerCompositeTools(
   server.registerTool("setup_role_hierarchy", {
     title: "Setup Role Hierarchy",
     description:
-      "Create multiple roles with specified colors and permissions, then reorder them into a hierarchy. Roles are created in order from highest to lowest position.",
+      "Create multiple roles with specified colors and permissions, then reorder them into a hierarchy. Roles are created in order from highest to lowest position. Note: bots can only position roles below their own highest role.",
     inputSchema: z.object({
       guild_id: snowflake
         .optional()
